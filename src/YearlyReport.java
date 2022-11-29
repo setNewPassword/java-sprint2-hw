@@ -48,6 +48,7 @@ public class YearlyReport {
                 profit = amount1;
             } else {
                 System.out.println("В годовом отчете какая-то путаница, проверьте входящие данные.");
+                System.out.println("--------------------------------------------------------------");
             }
 
             YearRow yearRow = new YearRow(expense, profit);
