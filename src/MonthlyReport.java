@@ -19,22 +19,16 @@ public class MonthlyReport {
         try {
             return Files.readAllLines(Path.of(path));
         } catch (IOException e) {
-            System.out.println("Невозможно прочитать файл с месячным отчётом. Возможно файл не находится в нужной директории.");
+            System.out.println("Невозможно прочитать файл " + e.getMessage() + ". Возможно файл не находится в нужной директории.");
             return Collections.emptyList();
         }
     }
 
     void readAllMonthReports(int inputYear) {
 
-        int yearNumber = inputYear;
-        String monthNumber;
-        for (int i = 1; i <= 12; i++) { // Счетчик для номера месяца
-            if (i < 10) {
-                monthNumber = "0" + i; // Если номер состоит из 1 цифры, добавляем слева нолик
-            }  else {
-                monthNumber = String.valueOf(i);
-            }
-            List<String> rowsOfMonthReport = readFileContents("resources/m." + yearNumber + monthNumber + ".csv");
+        String[] allowedMonths = new String[]{"01", "02", "03", "09", "12"};
+        for (String monthNumber : allowedMonths) { // Счетчик для номера месяца
+            List<String> rowsOfMonthReport = readFileContents("resources/m." + inputYear + monthNumber + ".csv");
             FullMonth fullMonth = new FullMonth();
             if (rowsOfMonthReport.size() > 0) {
                 for (int j = 1; j < rowsOfMonthReport.size(); j++) {

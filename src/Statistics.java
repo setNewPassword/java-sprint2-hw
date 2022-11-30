@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class Statistics {
     public static void reconcileTheReports(MonthlyReport receivedMR, YearlyReport receivedYR) { // Метод, производящий сверку отчетов
 
@@ -35,42 +37,29 @@ public class Statistics {
     }
 
     public static void makeMonthlyReport (MonthlyReport mR) {
+
+        HashMap<Integer, String> months = new HashMap<>();
+        months.put(1, "Январь:");
+        months.put(2, "Февраль:");
+        months.put(3, "Март:");
+        months.put(4, "Апрель:");
+        months.put(5, "Май:");
+        months.put(6, "Июнь:");
+        months.put(7, "Июль:");
+        months.put(8, "Август:");
+        months.put(9, "Сентябрь:");
+        months.put(10, "Октябрь:");
+        months.put(11, "Ноябрь:");
+        months.put(12, "Декабрь:");
+
         System.out.println("Статистика по месяцам:");
         for (int i : mR.listOfMonths.keySet()) {
             FullMonth currentMonth = mR.listOfMonths.get(i);
-
             int maxExpense = 0;
             String maxExpenseName = "";
             int maxProfit = 0;
             String maxProfitName = "";
-
-            if (i == 1) {
-                System.out.println("Январь:");
-            } else if (i == 2) {
-                System.out.println("Февраль:");
-            } else if (i == 3) {
-                System.out.println("Март:");
-            } else if (i == 4) {
-                System.out.println("Апрель:");
-            } else if (i == 5) {
-                System.out.println("Май:");
-            } else if (i == 6) {
-                System.out.println("Июнь:");
-            } else if (i == 7) {
-                System.out.println("Июль:");
-            } else if (i == 8) {
-                System.out.println("Август:");
-            } else if (i == 9) {
-                System.out.println("Сентябрь:");
-            } else if (i == 10) {
-                System.out.println("Октябрь:");
-            } else if (i == 11) {
-                System.out.println("Ноябрь:");
-            } else if (i == 12) {
-                System.out.println("Декабрь:");
-            } else {
-                System.out.println("Дребедень какая-то (((");
-            }
+            System.out.println(months.get(i));
             for (MonthRow m : currentMonth.monthData) {
                 if (m.isExpense){
                     if (maxExpense < (m.sumOfOne * m.quantity)) {
@@ -96,34 +85,21 @@ public class Statistics {
 
         System.out.println("Год " + yearNumber);
         System.out.println("Всего в отчете за этот год содержится информация о " + yR.yearData.size() + " месяцах.");
+        HashMap<Integer, String> months = new HashMap<>();
+        months.put(1, "Январь:");
+        months.put(2, "Февраль:");
+        months.put(3, "Март:");
+        months.put(4, "Апрель:");
+        months.put(5, "Май:");
+        months.put(6, "Июнь:");
+        months.put(7, "Июль:");
+        months.put(8, "Август:");
+        months.put(9, "Сентябрь:");
+        months.put(10, "Октябрь:");
+        months.put(11, "Ноябрь:");
+        months.put(12, "Декабрь:");
         for (int i : yR.yearData.keySet()) {
-            if (i == 1) {
-                System.out.println("Январь:");
-            } else if (i == 2) {
-                System.out.println("Февраль:");
-            } else if (i == 3) {
-                System.out.println("Март:");
-            } else if (i == 4) {
-                System.out.println("Апрель:");
-            } else if (i == 5) {
-                System.out.println("Май:");
-            } else if (i == 6) {
-                System.out.println("Июнь:");
-            } else if (i == 7) {
-                System.out.println("Июль:");
-            } else if (i == 8) {
-                System.out.println("Август:");
-            } else if (i == 9) {
-                System.out.println("Сентябрь:");
-            } else if (i == 10) {
-                System.out.println("Октябрь:");
-            } else if (i == 11) {
-                System.out.println("Ноябрь:");
-            } else if (i == 12) {
-                System.out.println("Декабрь:");
-            } else {
-                System.out.println("Дребедень какая-то (((");
-            }
+            System.out.println(months.get(i));
             int expense = yR.yearData.get(i).expense;
             int profit = yR.yearData.get(i).profit;
             System.out.println("Прибыль составила " + (profit - expense) + " рублей.");
